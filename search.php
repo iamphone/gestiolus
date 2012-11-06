@@ -39,7 +39,7 @@ $chiave=$_POST[chiave];
             {
                 $sql .= " AND ";
             }
-            $sql .= "(descrizione LIKE '%" . $arr_txt[$i] . "%' OR nomepc LIKE '%" . $arr_txt[$i] . "%')";
+            $sql .= "(descrizione LIKE '%" . $arr_txt[$i] . "%' OR nomepc LIKE '%" . $arr_txt[$i] . "%' OR soluzione LIKE '%" . $arr_txt[$i] . "%')";
         }
         //$sql .= " AND cat_id = art_categoria ORDER BY art_timestamp DESC";
 	$sql .= " AND (stato ='1') ORDER BY data_chiusura DESC";
