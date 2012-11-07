@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `guasti` (
   `data_chiusura` date NOT NULL,
   `stato` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
 
 --
 -- Struttura della tabella `lab`
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `lab` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
 
 --
 -- Struttura della tabella `tecnici`
@@ -35,4 +35,4 @@ CREATE TABLE IF NOT EXISTS `tecnici` (
   `nome` varchar(255) NOT NULL,
   `punteggio` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
