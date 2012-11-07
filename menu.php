@@ -35,8 +35,8 @@
 	</a>
 </acronym>
 <br />
-<acronym title="Chiudi finestra">
+<!-- <acronym title="Chiudi finestra">
 	<a href="javascript:window.close();" >
 		<img src="img/close.png" alt="Chiudi finestra" />
 	</a>
-</acronym>
+</acronym> -->
