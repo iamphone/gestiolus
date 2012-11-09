@@ -36,7 +36,11 @@
 		}
 		while ($row = mysql_fetch_array($result, MYSQL_NUM)){
     			echo "<tr>\n";
-			echo "<td>$row[1]</td><td>$row[2]</td><td>" . stripslashes($row[3]) . "<br/><p class=\"segnalatoda\">segnalato da: <b>" . $row[4] . "</b></p></td><td><p class=\"data\">" .  str_replace("-", "/", $row[5]) . "</p></td>\n";
+			echo "<td>$row[1]</td><td>$row[2]</td><td>" . stripslashes($row[3]) . "<br/>";
+			if($row[4] != ""){
+				echo "<p class=\"segnalatoda\">segnalato da: <b>" . $row[4] . "</b></p>";
+			}
+			echo "</td><td><p class=\"data\">" .  str_replace("-", "/", $row[5]) . "</p></td>\n";
 			?>
 				<form action="chiudi.php" method="POST">
 					<td><textarea name="soluzione" rows="3" cols="20"></textarea></td>
