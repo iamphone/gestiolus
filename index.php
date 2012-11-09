@@ -50,5 +50,8 @@
 			</acronym>
 		</p>
 	</p>
+	<p class="version">
+	<?php include("version.php"); ?>
+	</p>
 </body>
 </html>
