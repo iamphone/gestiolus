@@ -3,7 +3,12 @@ include "config.php";
 if (!$link) {
    	die('Could not connect: ' . mysql_error());
 }else{
-	$query = "UPDATE guasti SET stato = '1', data_chiusura = CURRENT_DATE, soluzione = '" . addslashes($_POST['soluzione']) . "', risolutore = '" . $_POST['tecnico'] . "' WHERE id = '" . $_POST[id] . "';";
+	if ( ! get_magic_quotes_gpc() ) {
+  		$_POST['soluzione'] = addslashes($_POST['soluzione']);
+  		$_POST['tecnico'] = addslashes($_POST['tecnico']);
+  		$_POST['id'] = addslashes($_POST['id']);
+  	}
+	$query = "UPDATE guasti SET stato = '1', data_chiusura = CURRENT_DATE, soluzione = '" . $_POST['soluzione'] . "', risolutore = '" . $_POST['tecnico'] . "' WHERE id = '" . $_POST[id] . "';";
 	$result = mysql_query($query);
 	if (!$result) {
     		die('Invalid query: ' . mysql_error());

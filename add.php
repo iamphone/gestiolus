@@ -11,17 +11,7 @@
 	<section>
 		<article>
 			<p class="dx">
-				<acronym title="Torna indietro">
-					<a href="index.php">
-						<img src="img/undo.png" alt="Torna indietro" />
-					</a>
-				</acronym>
-				<br />
-				<acronym title="Chiudi finestra">
-					<a href="javascript:window.close();" >
-						<img src="img/close.png" alt="Chiudi finestra" />
-					</a>
-				</acronym>
+				<?php include("menu.php"); ?>
 			</p>
 		</article>
 		<article>

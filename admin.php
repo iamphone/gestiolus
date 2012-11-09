@@ -1,11 +1,26 @@
 <?php include "config.php"; ?>
 <?php
+if ( ! get_magic_quotes_gpc() ) {
+  $_POST['add'] = addslashes($_POST['add']);
+  $_POST['nomelab'] = addslashes($_POST['nomelab']);
+  $_POST['nometecnico'] = addslashes($_POST['nometecnico']);
+  $_GET['dellab'] = addslashes($_GET['dellab']);
+  $_GET['deltecnico'] = addslashes($_GET['deltecnico']);
+}
 if ($_POST[add] == "addlab"){
-	$query="INSERT INTO lab VALUES('', '" . $_POST[nomelab] . "')";
-	$result = mysql_query($query);
+	if($_POST[nomelab] == ""){
+		$error = "<p class=\"error\">Non puoi lasciare vuoto il campo del nome...</p>";
+	}else{
+		$query="INSERT INTO lab VALUES('', '" . $_POST[nomelab] . "')";
+		$result = mysql_query($query);
+	}
 }elseif($_POST[add] == "addtecnico"){
-	$query="INSERT INTO tecnici VALUES('', '" . $_POST[nometecnico] . "', '0')";
-	$result = mysql_query($query);
+	if($_POST[nometecnico] == ""){
+		$error = "<p class=\"error\">Non puoi lasciare vuoto il campo del nome...</p>";
+	}else{
+		$query="INSERT INTO tecnici VALUES('', '" . $_POST[nometecnico] . "', '0')";
+		$result = mysql_query($query);
+	}
 }
 if($_GET[dellab]){
 	$query="DELETE FROM lab WHERE id =" . $_GET[dellab];
@@ -34,6 +49,13 @@ if($_GET[dellab]){
 				<h2>Pannello di Ammistrazione</h2>
 			</p>
 		</article>
+<?php
+if($error != ""){
+echo "<article>";
+echo $error;
+echo "</article>";
+}
+?>
 		<article>
 			<p>
 						<table>

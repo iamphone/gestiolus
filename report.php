@@ -15,7 +15,11 @@
 			</p>
 		</article>
 <?php
-//if(!isset($_GET[id])){
+if ( ! get_magic_quotes_gpc() ) {
+  $_GET['nome'] = addslashes($_GET['nome']);
+  $_GET['id'] = addslashes($_GET['id']);
+  $_GET['filtro'] = addslashes($_GET['filtro']);
+}
 ?>
 		<article>
 		<h2>Seleziona il filtro per il report.</h2>
@@ -34,9 +38,9 @@
 		}
 	}
 	?>
-	<a class="nomi" href="report.php?filtro=tutti">Tutti</a>
+	<a class="nomi" href="report.php?filtro=tutti">Tutti gli interventi</a>
 <?php
-if(!isset($_GET[id]) && isset($_GET[filtro])){
+if($_GET['id'] == ""){
 ?>
 	</article>
                 <article>
@@ -57,7 +61,7 @@ if(!isset($_GET[id]) && isset($_GET[filtro])){
                 }else{
                         $query="SELECT * FROM guasti WHERE stato='1' ORDER BY data_chiusura DESC";
                         $result = mysql_query($query);
-                        echo "<br /><hr />Numero totale di interventi <b>" . $_GET[nome] . ": " . mysql_affected_rows() . "</b><br /><br />\n";
+                        echo "<br /><hr />Numero totale di interventi <b>: " . mysql_affected_rows() . "</b><br /><br />\n";
 			if (!$result) {
                                 die('Invalid query: ' . mysql_error());
                         }
@@ -72,7 +76,8 @@ if(!isset($_GET[id]) && isset($_GET[filtro])){
                                 echo "</tr>\n";
                         }
 		}
-}elseif(isset($_GET[id])){
+}
+elseif(isset($_GET['id'])){
 ?>
 		</article>
 		<article>
@@ -92,7 +97,7 @@ if(!isset($_GET[id]) && isset($_GET[filtro])){
 		}else{
 			$query="SELECT * FROM guasti WHERE stato = '1' AND risolutore = '" . $_GET[id] . "' ORDER BY data_apertura";
 			$result = mysql_query($query);
-			echo "<br /><hr />Numero totale di interventi effettuati da <b>" . $_GET[nome] . ": " . mysql_affected_rows() . "</b><br /><br />\n";
+			echo "<br /><hr />Numero totale di interventi effettuati da <b>". $_GET[nome] . ": " . mysql_affected_rows() . "</b><br /><br />\n";
 			if (!$result) {
 	    			die('Invalid query: ' . mysql_error());
 			}
