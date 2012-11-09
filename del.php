@@ -2,7 +2,7 @@
 include "config.php";
 if(isset($_GET['id'])){
 	if ( ! get_magic_quotes_gpc() ) {
-  		$_GET['id'] = addslashes($_GET['id']);
+  		$_GET['id'] = addslashes(strip_tags($_GET['id']));
   	}
 	$query="DELETE FROM guasti WHERE id=" . $_GET[id];
 	if (!$link) {

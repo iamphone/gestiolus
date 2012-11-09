@@ -1,11 +1,11 @@
 <?php include "config.php"; ?>
 <?php
 if ( ! get_magic_quotes_gpc() ) {
-  $_POST['add'] = addslashes($_POST['add']);
-  $_POST['nomelab'] = addslashes($_POST['nomelab']);
-  $_POST['nometecnico'] = addslashes($_POST['nometecnico']);
-  $_GET['dellab'] = addslashes($_GET['dellab']);
-  $_GET['deltecnico'] = addslashes($_GET['deltecnico']);
+  $_POST['add'] = addslashes(strip_tags($_POST['add']));
+  $_POST['nomelab'] = addslashes(strip_tags($_POST['nomelab']));
+  $_POST['nometecnico'] = addslashes(strip_tags($_POST['nometecnico']));
+  $_GET['dellab'] = addslashes(strip_tags($_GET['dellab']));
+  $_GET['deltecnico'] = addslashes(strip_tags($_GET['deltecnico']));
 }
 if ($_POST[add] == "addlab"){
 	if($_POST[nomelab] == ""){

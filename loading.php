@@ -1,10 +1,11 @@
 <?php
 include "config.php";
 if(isset($_POST['nomepc']) && isset($_POST['ubicazione']) && isset($_POST['guasto']) && isset($_POST['nome'])){
-	$guasto=addslashes($_POST['guasto']);
-	$nomepc=addslashes($_POST['nomepc']);
-	$nome=addslashes($_POST['nome']);	
-	$query="INSERT INTO guasti VALUES('', '$nomepc', '$_POST[ubicazione]', '$guasto', '$nome', '" . date('Y-m-d') . "', '', '', '', '0')";
+	$guasto=addslashes(strip_tags($_POST['guasto']));
+	$nomepc=addslashes(strip_tags($_POST['nomepc']));
+	$nome=addslashes(strip_tags($_POST['nome']));
+	$ubicazione=addslashes(strip_tags($_POST['ubicazione']));	
+	$query="INSERT INTO guasti VALUES('', '$nomepc', '$ubicazione', '$guasto', '$nome', '" . date('Y-m-d') . "', '', '', '', '0')";
 	if (!$link) {
    		die('Could not connect: ' . mysql_error());
 	}else{

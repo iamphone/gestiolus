@@ -4,9 +4,9 @@ if (!$link) {
    	die('Could not connect: ' . mysql_error());
 }else{
 	if ( ! get_magic_quotes_gpc() ) {
-  		$_POST['soluzione'] = addslashes($_POST['soluzione']);
-  		$_POST['tecnico'] = addslashes($_POST['tecnico']);
-  		$_POST['id'] = addslashes($_POST['id']);
+  		$_POST['soluzione'] = addslashes(strip_tags($_POST['soluzione']));
+  		$_POST['tecnico'] = addslashes(strip_tags($_POST['tecnico']));
+  		$_POST['id'] = addslashes(strip_tags($_POST['id']));
   	}
 	$query = "UPDATE guasti SET stato = '1', data_chiusura = CURRENT_DATE, soluzione = '" . $_POST['soluzione'] . "', risolutore = '" . $_POST['tecnico'] . "' WHERE id = '" . $_POST[id] . "';";
 	$result = mysql_query($query);

@@ -16,9 +16,9 @@
 		</article>
 <?php
 if ( ! get_magic_quotes_gpc() ) {
-  $_GET['nome'] = addslashes($_GET['nome']);
-  $_GET['id'] = addslashes($_GET['id']);
-  $_GET['filtro'] = addslashes($_GET['filtro']);
+  $_GET['nome'] = addslashes(strip_tags($_GET['nome']));
+  $_GET['id'] = addslashes(strip_tags($_GET['id']));
+  $_GET['filtro'] = addslashes(strip_tags($_GET['filtro']));
 }
 ?>
 		<article>
