@@ -96,3 +96,9 @@ input, textarea, select{
 	margin-left: 15px;
 	color: #F44;
 }
+.version{
+	position: fixed;
+	z-index: 2;
+	bottom: 0px;
+	right: 0px;
+}
