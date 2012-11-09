@@ -22,6 +22,9 @@
 				<input type="submit" value="cerca" />
 			</form>
 <?php
+	if ( ! get_magic_quotes_gpc() ) {
+  		$_POST['chiave'] = addslashes($_POST['chiave']);
+  	}
 $chiave=$_POST[chiave];
     if (isset($chiave) == false || $chiave == "")
     {

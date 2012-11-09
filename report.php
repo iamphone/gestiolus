@@ -15,7 +15,11 @@
 			</p>
 		</article>
 <?php
-//if(!isset($_GET[id])){
+if ( ! get_magic_quotes_gpc() ) {
+  $_GET['nome'] = addslashes($_GET['nome']);
+  $_GET['id'] = addslashes($_GET['id']);
+  $_GET['filtro'] = addslashes($_GET['filtro']);
+}
 ?>
 		<article>
 		<h2>Seleziona il filtro per il report.</h2>

@@ -1,5 +1,12 @@
 <?php include "config.php"; ?>
 <?php
+if ( ! get_magic_quotes_gpc() ) {
+  $_POST['add'] = addslashes($_POST['add']);
+  $_POST['nomelab'] = addslashes($_POST['nomelab']);
+  $_POST['nometecnico'] = addslashes($_POST['nometecnico']);
+  $_GET['dellab'] = addslashes($_GET['dellab']);
+  $_GET['deltecnico'] = addslashes($_GET['deltecnico']);
+}
 if ($_POST[add] == "addlab"){
 	$query="INSERT INTO lab VALUES('', '" . $_POST[nomelab] . "')";
 	$result = mysql_query($query);

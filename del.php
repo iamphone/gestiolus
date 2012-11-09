@@ -1,6 +1,9 @@
 <?php
 include "config.php";
 if(isset($_GET['id'])){
+	if ( ! get_magic_quotes_gpc() ) {
+  		$_GET['id'] = addslashes($_GET['id']);
+  	}
 	$query="DELETE FROM guasti WHERE id=" . $_GET[id];
 	if (!$link) {
    		die('Could not connect: ' . mysql_error());
