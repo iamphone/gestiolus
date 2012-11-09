@@ -1,5 +1,5 @@
 <?php
 $title = "Gestione interventi";
-$link = mysql_connect('localhost', 'root', 'cf81003');
-mysql_select_db("gestiolusdev");
+$link = mysql_connect('_HOST_', '_USER_', '_PASSWORD_');
+mysql_select_db("gestiolus");
 ?>
