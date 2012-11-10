@@ -12,7 +12,3 @@ $checkupdate = "y"; 		// controllo aggiornamenti: y = abilitato, n = disabilitat
 $link = mysql_connect($hostname, $username, $password);
 mysql_select_db($database);
 ?>
-<?php
-$link = mysql_connect($hostname, $username, $password);
-mysql_select_db($database);
-?>
