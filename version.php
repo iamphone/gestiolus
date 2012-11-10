@@ -15,7 +15,7 @@ if($checkupdate == "y"){
 	}
 	$onlineversion = fread($file, 1024);
 	fclose($file);
-	if($localversion < $onlineversion){
+	if(trim($localversion) < trim($onlineversion)){
 		echo " (E' disponibile la versione <a href=\"http://code.google.com/p/gestiolus/downloads/list\">" .  $onlineversion . "</a>) ";
 	}
 }
