@@ -48,17 +48,17 @@
 						<input type="hidden" name="id" value="<?php echo $row[0]; ?>" />
 						<select name="tecnico">
 						<?php
-						$querytecnici="SELECT * FROM tecnici";
+						$querytecnici="SELECT * FROM tecnici WHERE punteggio = 1";
 						$resulttecnici = mysql_query($querytecnici);
 						while($rowtecnici = mysql_fetch_array($resulttecnici)){
 								echo "<option value=\"" . $rowtecnici[0] . "\">" . $rowtecnici[1] . "</option>";
 						}
 						?>
 						</select>
-						<acronym title="cancella: <?php echo $row[3]; ?>">
+						<acronym title="Elimina: <?php echo $row[3]; ?>">
 							<a href="del.php?id=<?php echo $row[0]; ?>"><img src="img/del.png" alt="cancella" /></a>&nbsp;&nbsp; 
 						</acronym>						
-						<acronym title="chiudi: <?php echo $row[3]; ?>">							
+						<acronym title="Elimina: <?php echo $row[3]; ?>">							
 							<input type="submit" value="chiudi" />
 						</acronym>
 					

@@ -1,8 +1,23 @@
 <?php
+include("config.php");
 $filename = "VERSION";
 $handle = fopen($filename, "r");
-$contents = fread($handle, filesize($filename));
+$localversion = fread($handle, filesize($filename));
 fclose($handle);
+
 echo "<a href=\"http://code.google.com/p/gestiolus/\">Gestiolus </a>";
-echo "v. " . $contents;
+echo "v. " . $localversion;
+
+if($checkupdate == "y"){
+	$file = fopen ("https://gestiolus.googlecode.com/git/VERSION", "r");
+	if (!$file) {
+		echo "<p>Unable to open remote file.\n";
+		exit;
+	}
+	$onlineversion = fread($file, 1024);
+	fclose($file);
+	if($localversion < $onlineversion){
+		echo " (E' disponibile la versione <a href=\"http://code.google.com/p/gestiolus/downloads/list\">" .  $onlineversion . "</a>) ";
+	}
+}
 ?>

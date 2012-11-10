@@ -16,14 +16,17 @@
 		</article>
 <?php
 if ( ! get_magic_quotes_gpc() ) {
-  $_GET['nome'] = addslashes(strip_tags($_GET['nome']));
-  $_GET['id'] = addslashes(strip_tags($_GET['id']));
-  $_GET['filtro'] = addslashes(strip_tags($_GET['filtro']));
+  //$_GET['nome'] = addslashes(strip_tags($_GET['nome']));
+  $_POST['id'] = addslashes(strip_tags($_POST['id']));
+  $_POST['filtro'] = addslashes(strip_tags($_POST['filtro']));
+  
 }
 ?>
 		<article>
 		<h2>Seleziona il filtro per il report.</h2>
-
+		<form action="report.php" method="post">
+			Seleziona il nome: <select name="filtro">
+			<option value="tutti">Tutti</option>
 	<?php
 	if (!$link) {
 	  		die('Could not connect: ' . mysql_error());
@@ -34,13 +37,19 @@ if ( ! get_magic_quotes_gpc() ) {
 	  		die('Invalid query: ' . mysql_error());
 		}
 		while ($row = mysql_fetch_array($result, MYSQL_NUM)){
-			echo "<a class=\"nomi\" href=\"report.php?id=" . $row[0] . "&nome=" . $row[1] . "\">" . $row[1] . "</a>\n";
+			//echo "<a class=\"nomi\" href=\"report.php?id=" . $row[0] . "&nome=" . $row[1] . "\">" . $row[1] . "</a>\n";
+			echo "<option value=\"" . $row[0] . "\">" . $row[1] . "</option>\n";
 		}
 	}
 	?>
-	<a class="nomi" href="report.php?filtro=tutti">Tutti gli interventi</a>
+		<!-- <a class="nomi" href="report.php?filtro=tutti">Tutti gli interventi</a> -->
+				
+			</select>
+			<input type="submit" value="Filtra" />
+		</form>
+		
 <?php
-if($_GET['id'] == ""){
+if($_POST['filtro'] == "" || $_POST['filtro'] == "tutti"){
 ?>
 	</article>
                 <article>
@@ -77,7 +86,7 @@ if($_GET['id'] == ""){
                         }
 		}
 }
-elseif(isset($_GET['id'])){
+elseif(isset($_POST['filtro'])){
 ?>
 		</article>
 		<article>
@@ -95,9 +104,12 @@ elseif(isset($_GET['id'])){
 		if (!$link) {
 	   		die('Could not connect: ' . mysql_error());
 		}else{
-			$query="SELECT * FROM guasti WHERE stato = '1' AND risolutore = '" . $_GET[id] . "' ORDER BY data_apertura";
+			$queryname="SELECT nome FROM tecnici WHERE id=" . $_POST['filtro'];
+			$resultname=mysql_query($queryname);
+			$nome = mysql_fetch_array($resultname);
+			$query="SELECT * FROM guasti WHERE stato = '1' AND risolutore = '" . $_POST['filtro'] . "' ORDER BY data_apertura";
 			$result = mysql_query($query);
-			echo "<br /><hr />Numero totale di interventi effettuati da <b>". $_GET[nome] . ": " . mysql_affected_rows() . "</b><br /><br />\n";
+			echo "<br /><hr />Numero totale di interventi effettuati da <b>". $nome[0] . "</b>:<b> " . mysql_affected_rows() . "</b><br /><br />\n";
 			if (!$result) {
 	    			die('Invalid query: ' . mysql_error());
 			}
@@ -111,6 +123,7 @@ elseif(isset($_GET['id'])){
 		}
 		mysql_close($link);
 }
+//echo $query;
 	?>		
 	
 				</table>
