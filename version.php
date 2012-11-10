@@ -7,7 +7,6 @@ fclose($handle);
 
 echo "<a href=\"http://code.google.com/p/gestiolus/\">Gestiolus </a>";
 echo "v. " . $localversion;
-
 if($checkupdate == "y"){
 	$file = fopen ("https://gestiolus.googlecode.com/git/VERSION", "r");
 	if (!$file) {
@@ -20,4 +19,5 @@ if($checkupdate == "y"){
 		echo " (E' disponibile la versione <a href=\"http://code.google.com/p/gestiolus/downloads/list\">" .  $onlineversion . "</a>) ";
 	}
 }
+
 ?>
