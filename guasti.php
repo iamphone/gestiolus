@@ -3,8 +3,10 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title></head>
-		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
 	</head>
 <body>
 	<section>
@@ -55,12 +57,12 @@
 						}
 						?>
 						</select>
-						<acronym title="Elimina: <?php echo $row[3]; ?>">
+						<abbr title="Elimina: <?php echo $row[3]; ?>">
 							<a href="del.php?id=<?php echo $row[0]; ?>"><img src="img/del.png" alt="cancella" /></a>&nbsp;&nbsp; 
-						</acronym>						
-						<acronym title="Elimina: <?php echo $row[3]; ?>">							
+						</abbr>						
+						<abbr title="Elimina: <?php echo $row[3]; ?>">							
 							<input type="submit" value="chiudi" />
-						</acronym>
+						</abbr>
 					
 					</td>
 				</form>

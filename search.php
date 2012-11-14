@@ -3,8 +3,10 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title></head>
-		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
 	</head>
 <body>
 	<section>
@@ -75,9 +77,10 @@ $chiave=$_POST[chiave];
 		echo "<tr><td>$rs[1]</td><td>$rs[2]</td><td>$rs[3]</td><td>$rs[8]</td><td>$rs[6]</td><td>$rs[4]</td></tr>";
             }
         }
+	echo "</table>\n";
     }
+    
 ?>
-				</table>
 			</p>
 		</article>
 	</section>

@@ -3,15 +3,16 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title></head>
-		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
 	</head>
 <body>
 	<section>
 		<article>
 			<p class="dx">
 				<?php include "menu.php"; ?>
-				</acronym>
 			</p>
 		</article>
 <?php
@@ -54,16 +55,7 @@ if($_POST['filtro'] == "" || $_POST['filtro'] == "tutti"){
 	</article>
                 <article>
                         <p>
-                                <table class="tabella">
-                                        <tr>
-                                                <th>Computer</th>
-                                                <th>Ubicazione</th>
-                                                <th>Problema Riscontrato</th>
-                                                <th>Soluzione</th>
-                                                <th>Data Apertura</th>
-                                                <th>Data Chiusura</th>
-                                                <th>Tecnico</th>
-                                        </tr>
+                                
         <?php
                 if (!$link) {
                         die('Could not connect: ' . mysql_error());
@@ -74,11 +66,24 @@ if($_POST['filtro'] == "" || $_POST['filtro'] == "tutti"){
 			if (!$result) {
                                 die('Invalid query: ' . mysql_error());
                         }
+			?>
+				<table class="tabella">
+                                        <tr>
+                                                <th>Computer</th>
+                                                <th>Ubicazione</th>
+                                                <th>Problema Riscontrato</th>
+                                                <th>Soluzione</th>
+                                                <th>Data Apertura</th>
+                                                <th>Data Chiusura</th>
+                                                <th>Tecnico</th>
+                                        </tr>
+				<?php
                         while ($row = mysql_fetch_array($result, MYSQL_NUM)){
                         	$querytecnico="SELECT nome FROM tecnici WHERE id=" . $row[7];
                         	$resulttecnico=mysql_query($querytecnico);
                         	$risolutore=mysql_fetch_array($resulttecnico);
                                 echo "<tr>\n";
+				
                                 echo "<td>$row[1]</td><td>$row[2]</td><td>" . stripslashes($row[3]) . "</td><td>" . stripslashes($row[6]) . "</td><td>" . str_replace("-", "/", $row[8]) . "</td><td>" . str_replace("-", "/", $row[5]) . "</td><td>" . $risolutore[0] . "</td>\n";
                                 ?>
                                 <?php

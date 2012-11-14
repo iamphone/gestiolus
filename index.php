@@ -3,51 +3,54 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title></head>
-		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
+		
 	</head>
 <body>
 	<p class="titolo">Gestione Interventi</p>
 	<p class="menu">
 		<p class="icone">
-			<acronym title="Lista guasti">
+			<abbr title="Lista guasti">
 				<a href="guasti.php">
 					<img src="img/view.png" alt="Lista guasti" />
 				</a><br />
 				Lista Guasti
-			</acronym>
+			</abbr>
 		</p>
 		<p class="icone">
-			<acronym title="Segnala guasto">
+			<abbr title="Segnala guasto">
 				<a href="segnala.php">
 					<img src="img/new.png" alt="Segnala guasto" />
 				</a><br />
 				Segnala<br />guasto
-			</acronym>
+			</abbr>
 		</p>
 		<p class="icone">
-			<acronym title="Impostazioni">
+			<abbr title="Impostazioni">
 				<a href="admin.php" >
 					<img src="img/setting.png" alt="Impostazioni" />
 				</a><br />
 				Impostazioni
-			</acronym>
+			</abbr>
 		</p>
 		<p class="icone">
-			<acronym title="Ricerca guasti">
+			<abbr title="Ricerca guasti">
 				<a href="search.php" >
 					<img src="img/search.png" alt="Ricerca Guasti" />
 				</a><br />
 				Ricerca<br />Guasti
-			</acronym>
+			</abbr>
 		</p>
 		<p class="icone">
-			<acronym title="Report Interventi">
+			<abbr title="Report Interventi">
 				<a href="report.php" >
 					<img src="img/stat.png" alt="Report Interventi" />
 				</a><br />
 				Report<br />Interventi
-			</acronym>
+			</abbr>
 		</p>
 	</p>
 	<p class="version">

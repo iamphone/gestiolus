@@ -44,8 +44,10 @@ if($_GET[enable]){
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title></head>
-		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
 	</head>
 <body>
 	<section>
@@ -69,8 +71,7 @@ echo "</article>";
 		<article>
 			<p>
 						<table>
-
-								<th>Gestione Laboratori</th>
+							<tr><th>Gestione Laboratori</th><th>Azione</th></tr>
 
 <?php
 $query="SELECT * FROM lab";
@@ -79,7 +80,7 @@ if (!$result) {
 	die('Invalid query: ' . mysql_error());
 }
 while ($row = mysql_fetch_array($result, MYSQL_NUM)){
-	echo "<tr><td>" . $row[1] . "</td><td><acronym title=\"Elimina\"><a href=\"admin.php?dellab=" . $row[0] . "\"><img src=\"img/del.png\" alt=\"cancella\" /></a></acronym></td></tr>\n";
+	echo "<tr><td>" . $row[1] . "</td><td><abbr title=\"Elimina\"><a href=\"admin.php?dellab=" . $row[0] . "\"><img src=\"img/del.png\" alt=\"cancella\" /></a></abbr></td></tr>\n";
 }
 ?>
 							<tr>
@@ -88,7 +89,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)){
 										<input type="text" name="nomelab" />
 								</td>
 								<td>
-										<acronym title="Aggiungi"><input type="image" name="add" value="addlab" src="img/add.png" alt="add" /></acronym>
+										<abbr title="Aggiungi"><input type="image" name="add" value="addlab" src="img/add.png" alt="add" /></abbr>
 									</form>
 								</td>
 							</tr>
@@ -96,16 +97,16 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)){
 			</p>
 			<p>
 						<table>
-								<th>Gestione Tecnici</th>
+							<tr><th>Gestione Tecnici</th><th>Azione</th></tr>
 <?php
 $querytecnici="SELECT * FROM tecnici";
 $resulttecnici = mysql_query($querytecnici);
 while($rowtecnici = mysql_fetch_array($resulttecnici)){
 	echo "<tr><td>" . $rowtecnici[1] . "</td>";
 	if($rowtecnici[2] == 1){
-		echo "<td><acronym title=\"Utente abilitato. Clicka per disabilitarlo\"><a href=\"admin.php?disable=" . $rowtecnici[0] . "\"><img src=\"img/enable.png\" alt=\"Disabilita\" /></acronym></td></tr>";
+		echo "<td><abbr title=\"Utente abilitato. Clicka per disabilitarlo\"><a href=\"admin.php?disable=" . $rowtecnici[0] . "\"><img src=\"img/enable.png\" alt=\"Disabilita\" /></abbr></td></tr>";
 	}elseif($rowtecnici[2] == 0){
-		echo "<td><acronym title=\"Utente disabilitato. Clicka per abilitarlo\"><a href=\"admin.php?enable=" . $rowtecnici[0] . "\"><img src=\"img/disable.png\" alt=\"Abilita\" /></acronym></td></tr>";
+		echo "<td><abbr title=\"Utente disabilitato. Clicka per abilitarlo\"><a href=\"admin.php?enable=" . $rowtecnici[0] . "\"><img src=\"img/disable.png\" alt=\"Abilita\" /></abbr></td></tr>";
 	}
 	//echo "<td><a href=\"admin.php?deltecnico=" . $rowtecnici[0] . "\"><img src=\"img/del.png\" alt=\"cancella\" /></a></td></tr>";
 }
@@ -116,7 +117,7 @@ while($rowtecnici = mysql_fetch_array($resulttecnici)){
 										<input type="text" name="nometecnico" />
 								</td>
 								<td>
-										<acronym title="Aggiungi"><input type="image" name="add" value="addtecnico" src="img/add.png" alt="add" /></acronym>
+										<abbr title="Aggiungi"><input type="image" name="add" value="addtecnico" src="img/add.png" alt="add" /></abbr>
 									</form>
 								</td>
 							</tr>

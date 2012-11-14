@@ -20,7 +20,9 @@ if (!$link) {
 	<head> 
 		<meta charset=utf-8> 
 		<meta HTTP-EQUIV="Refresh" content="0; url=guasti.php">
-		<title><?php echo $title; ?></title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
 	</head>
 </html>
 
