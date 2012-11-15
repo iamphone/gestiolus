@@ -10,7 +10,10 @@
 		
 	</head>
 <body>
+	<article>
 	<p class="titolo">Gestione Interventi</p>
+	</article>
+	<article>
 	<p class="menu">
 		<p class="icone">
 			<abbr title="Lista guasti">
@@ -53,6 +56,10 @@
 			</abbr>
 		</p>
 	</p>
+	</article>
+
+	<?php include("note.php"); ?>
+	
 	<p class="version">
 	<?php include("version.php"); ?>
 	</p>
