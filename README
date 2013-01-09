@@ -4,20 +4,9 @@ Gestiolus è un gestionale per interventi tecnici. Permette
 di tenere traccia gli interventi tecnici svolti da diverse
 persone su diversi laboratori o aule.
 
-REQUISITI
-
-* server web
-* Php5
-* Mysql
-
 INSTALLAZIONE
 
-* crea un database, o usane uno già esistente
-* configura il config.php, inserendo i parametri richiesti
-* apri, dal browser, il file install.php
-* segui le istruzioni
-
-AGGIORNAMENTO
-
-Se stai aggiornando la versione antecedente alla 0.5
-devi eseguire le query presenti nel file table_upgrade.sql
+* creare un database chiamato "gestiolus"
+* esegui la query nel file table.sql
+* configura host, username e password nel file config.php
+* se vuoi puoi modificare a piacimento la variabile $title

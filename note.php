@@ -45,7 +45,7 @@ if(isset($_POST['note'])){
 $query="SELECT * FROM notepad ORDER BY id DESC";
 $result = mysql_query($query);
 	if (!$result) {
-		die('Invalid query: ' . mysql_error());
+		die('<p class=\"error\">Mysql ERROR: ' . mysql_error() . ' <i>hai configurato il file <a href=install.php>config.php</a>?</i></p>');
 	}
 	while ($row = mysql_fetch_array($result, MYSQL_NUM)){
 		echo "<p class=\"inputnote\">" . $row[1] . " <i class=\"delnote\">" . $row[2] . " <a href=\"note.php?delid=" . $row[0] . "\"><img src=\"img/x.png\" alt=\"cancella\" /></a></i> </p>\n";

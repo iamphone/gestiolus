@@ -42,7 +42,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)){
 			<tr>
 				<td>Nome computer</td>
 				<td>
-					<abbr title="Inserisci il nome del computer.">
+					<abbr title="Inserisci il nome del computer. E' scritto su un lato del computer">
 						<input type="text" name="nomepc" size="45" />
 					</abbr>
 				</td>

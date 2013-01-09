@@ -1,20 +1,45 @@
-<?php include "config.php"; ?>
-<!DOCTYPE html> 
-<html lang="it"> 
-	<head> 
-		<meta charset=utf-8> 
-		<title>Gestiolus Installer</title>
-		<style>
-		<?php include 'style.css'; ?>
-		</style>
-		
-	</head>
-<body>
-	<article>
-		<p class="titolo">Installazione Gestiolus</p>
-	</article>
 <?php
-if(isset($_POST[createtable])){
+function stampa_errore(){
+	echo "<p class=\"error\">\n";
+	echo "Sembra che la directory del tuo server web non abbia i permessi di scrittura.<br />\n";
+	echo "Cambia i permessi oppure configura a mano il file <i>config_example.php</i> e rinominalo in <i>config.php</i>.<br />\n";
+	?>
+	<form method="post" action="install.php">
+		Crea le tabelle <input type="submit" value="Crea le tabelle" name="createtable" />
+	</form>
+	<?php
+	echo "</p>\n";
+}
+function stampa_form(){
+	?>
+	<b>Inserisci i dati che verranno poi salvati nel file <i>config.php</i><br />
+	<form method="post" action="install.php">
+		<input type="hidden" name="config" value="y" />
+		<input type="text" name="database" value="gestiolusdev" /> Nome del Database<br />
+		<input type="checkbox" name="db" value="createdb" /> Crea il database<br />
+		<input type="text" name="host" value="localhost" /> Hostname<br />
+		<input type="text" name="user" /> Username<br />
+		<input type="password" name="password" /> Password<br />
+		<input type="text" name="title" value="Gestiolus" /> Titolo della Pagina<br />
+		Controllo automatico degli aggiornamenti?
+			<input checked="checked" type="radio" name="update" value="yes"/> Si
+			<input type="radio" name="update" value="no"/> No<br />
+		<input type="submit" value="Installa" name="createtable" />
+	</form>
+	<?php
+}
+function installa(){
+	echo $_POST['database'];
+	if($_POST['db'] == "createdb"){
+		$sql = 'CREATE DATABASE ' . $_POST['database'];
+		if (mysql_query($sql, $link)) {
+			echo "Database " . $_POST['database'] . " creato con successo\n";
+		} else {
+			echo 'Error creating database: ' . mysql_error() . "\n";
+		}
+	}
+	mysql_select_db($_POST['database']);
+
 	$query1="CREATE TABLE IF NOT EXISTS `guasti` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nomepc` varchar(100) NOT NULL,
@@ -82,18 +107,49 @@ if(isset($_POST[createtable])){
 		echo "</p></article>";
 	}
 	mysql_close($link);
-}elseif(!isset($_POST[createtable])){
-?>
-	<article class="install">
-		<p>
-			<b>Modifica il file <i>config.php</i> con i tuoi parametri e poi procedi all'installazione</b><br />
-			<form method="post" action="install.php">
-				<input type="submit" value="Crea le tabelle nel database" name="createtable" />
-			</form>
-		</p>
-	</article>
-<?php
 }
 ?>
+<!DOCTYPE html> 
+<html lang="it"> 
+	<head> 
+		<meta charset=utf-8> 
+		<title>Gestiolus Installer</title>
+		<style>
+		<?php include 'style.css'; ?>
+		</style>
+		
+	</head>
+<body>
+	<article>
+		<p class="titolo">Installazione Gestiolus</p>
+	</article>
+
+	<article>
+<?php
+$filename = 'config.php';
+if(isset($_POST[createtable])){
+	if($_POST['config'] == "y"){
+		echo "ciao";
+	}else{
+	}
+}elseif(!isset($_POST[createtable])){
+	if (is_writable($filename)) {
+		if (!$handle = fopen($filename, 'a')) {
+			stampa_errore();
+			exit;
+		}
+		if (fwrite($handle, $somecontent) === FALSE) {
+			stampa_errore();
+			exit;
+		}
+		stampa_form();
+		fclose($handle);
+	} else {
+		stampa_errore();
+		echo "</p>\n";
+	}
+}
+?>
+	</article>
 </body>
 </html>
