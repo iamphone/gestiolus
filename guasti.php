@@ -3,21 +3,14 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title>
-		<style>
-		<?php include 'style.css'; ?>
-		</style>
+		<title><?php echo $title; ?></title></head>
+		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 	</head>
 <body>
-	<section>
-		<article>
-			<p class="dx">
+			<div class="titolo">
+				Lista guasti aperti
 				<?php include "menu.php"; ?>
-			</p>
-		</article>
-		<article>
-			<p>
-			<h2>Lista guasti aperti</h2>
+			</div>
 				<table class="tabella">
 					<tr>
 						<th>Computer</th>
@@ -38,7 +31,8 @@
 		}
 		while ($row = mysql_fetch_array($result, MYSQL_NUM)){
     			echo "<tr>\n";
-			echo "<td>$row[1]</td><td>$row[2]</td><td>" . stripslashes($row[3]) . "<br/>";
+			echo "<td>$row[1]<p class=\"segnalatoda\">cod./inv.: <b>$row[10]</b></p></td>";
+			echo "<td>$row[2]</td><td>" . stripslashes($row[3]) . "<br/>";
 			if($row[4] != ""){
 				echo "<p class=\"segnalatoda\">segnalato da: <b>" . $row[4] . "</b></p>";
 			}
@@ -57,12 +51,12 @@
 						}
 						?>
 						</select>
-						<abbr title="Elimina: <?php echo $row[3]; ?>">
+						<acronym title="Elimina: <?php echo $row[3]; ?>">
 							<a href="del.php?id=<?php echo $row[0]; ?>"><img src="img/del.png" alt="cancella" /></a>&nbsp;&nbsp; 
-						</abbr>						
-						<abbr title="Elimina: <?php echo $row[3]; ?>">							
+						</acronym>						
+						<acronym title="Elimina: <?php echo $row[3]; ?>">							
 							<input type="submit" value="chiudi" />
-						</abbr>
+						</acronym>
 					
 					</td>
 				</form>
@@ -73,8 +67,5 @@
 	mysql_close($link);
 
 ?>				</table>
-			</p>
-		</article>
-	</section>
 </body>
 </html>

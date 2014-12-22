@@ -22,10 +22,8 @@ if(isset($_GET['id'])){
 	<head> 
 		<meta charset=utf-8> 
 		<meta HTTP-EQUIV="Refresh" content="0; url=guasti.php">
-		<title><?php echo $title; ?></title>
-		<style>
-		<?php include 'style.css'; ?>
-		</style>
+		<title><?php echo $title; ?></title></head>
+		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 	</head>
 <body>
 	<section>

@@ -10,11 +10,11 @@
 		
 	</head>
 <body>
-	<article>
-	<p class="titolo">Gestione Interventi</p>
-	</article>
-	<article>
-	<p class="menu">
+	<div class="titolo">
+		Gestione Interventi
+		<?php include("menu.php"); ?>
+	</div>
+	<!-- <div class="menu">
 		<p class="icone">
 			<abbr title="Lista guasti">
 				<a href="guasti.php">
@@ -55,8 +55,7 @@
 				Report<br />Interventi
 			</abbr>
 		</p>
-	</p>
-	</article>
+	</div> -->
 
 	<?php include("note.php"); ?>
 	

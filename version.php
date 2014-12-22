@@ -1,4 +1,5 @@
 <?php
+/*
 include("config.php");
 $filename = "VERSION";
 $handle = fopen($filename, "r");
@@ -19,5 +20,5 @@ if($checkupdate == "y"){
 		echo " (E' disponibile la versione <a href=\"http://code.google.com/p/gestiolus/downloads/list\">" .  $onlineversion . "</a>) ";
 	}
 }
-
+*/
 ?>

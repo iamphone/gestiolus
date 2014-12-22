@@ -3,21 +3,15 @@
 <html lang="it"> 
 	<head> 
 		<meta charset=utf-8> 
-		<title><?php echo $title; ?></title>
-		<style>
-		<?php include 'style.css'; ?>
-		</style>
+		<title><?php echo $title; ?></title></head>
+		<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 	</head>
 <body>
-	<section>
-		<article>
-			<p class="dx">
+			<div class="titolo">
+				Ricerca Guasti
 				<?php include "menu.php"; ?>
-			</p>
-		</article>
-		<article>
+			</div>
 			<p>
-			<h2>Ricerca Guasti</h2>
 			Inserisci le chiavi di ricerca<br />
 			<form method="post" action="search.php">
 				<input type="text" name="chiave" value="<?php echo $_POST[chiave];  ?>" />
@@ -36,6 +30,12 @@ $chiave=$_POST[chiave];
     }
     else
     {
+	$query_tecnici="SELECT id,nome FROM tecnici";
+	$out_query_tecnici=mysql_query($query_tecnici, $link);
+	$arr_tecnici=array();
+	while($tec = mysql_fetch_array($out_query_tecnici)){
+		$arr_tecnici[$tec[0]] = $tec[1];
+	}
         $arr_txt = explode(" ", $chiave);
         $sql = "SELECT * FROM guasti WHERE ";
         for ($i=0; $i<count($arr_txt); $i++)
@@ -63,6 +63,7 @@ $chiave=$_POST[chiave];
 ?>
 				<table class="tabella">
 					<tr>
+						<th>Cod/Inv</th>
 						<th>Computer</th>
 						<th>Ubicazione</th>
 						<th>Problema Riscontrato</th>
@@ -74,15 +75,13 @@ $chiave=$_POST[chiave];
             for($x=0; $x<$quanti; $x++)
             {
                 $rs = mysql_fetch_row($query);
-		echo "<tr><td>$rs[1]</td><td>$rs[2]</td><td>$rs[3]</td><td>$rs[8]</td><td>$rs[6]</td><td>$rs[4]</td></tr>";
+		$id=$rs[7];
+		echo "<tr><td>$rw[10]</td><td>$rs[1]</td><td>$rs[2]</td><td>$rs[3]</td><td>$rs[8]</td><td>$rs[6]</td><td>$arr_tecnici[$id]</td></tr>";
             }
         }
-	echo "</table>\n";
     }
-    
 ?>
+				</table>
 			</p>
-		</article>
-	</section>
 </body>
 </html>

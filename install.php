@@ -14,7 +14,7 @@ function stampa_form(){
 	?>
 	<b>Inserisci i dati che verranno poi salvati nel file <i>config.php</i><br />
 	<form method="post" action="install.php">
-		<input type="hidden" name="config" value="y" />
+		<!-- <input type="hidden" name="config" value="y" />
 		<input type="text" name="database" value="gestiolusdev" /> Nome del Database<br />
 		<input type="checkbox" name="db" value="createdb" /> Crea il database<br />
 		<input type="text" name="host" value="localhost" /> Hostname<br />
@@ -23,7 +23,7 @@ function stampa_form(){
 		<input type="text" name="title" value="Gestiolus" /> Titolo della Pagina<br />
 		Controllo automatico degli aggiornamenti?
 			<input checked="checked" type="radio" name="update" value="yes"/> Si
-			<input type="radio" name="update" value="no"/> No<br />
+			<input type="radio" name="update" value="no"/> No<br />-->
 		<input type="submit" value="Installa" name="createtable" />
 	</form>
 	<?php

@@ -1,3 +1,7 @@
+--
+-- Struttura della tabella `guasti`
+--
+
 CREATE TABLE IF NOT EXISTS `guasti` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nomepc` varchar(100) NOT NULL,
@@ -12,11 +16,19 @@ CREATE TABLE IF NOT EXISTS `guasti` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
 
+--
+-- Struttura della tabella `lab`
+--
+
 CREATE TABLE IF NOT EXISTS `lab` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
+
+--
+-- Struttura della tabella `tecnici`
+--
 
 CREATE TABLE IF NOT EXISTS `tecnici` (
   `id` int(50) NOT NULL AUTO_INCREMENT,
@@ -24,10 +36,3 @@ CREATE TABLE IF NOT EXISTS `tecnici` (
   `punteggio` int(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;
-
-CREATE TABLE IF NOT EXISTS `notepad` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `note` text NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;

@@ -1,5 +1,8 @@
 <?php
 include "config.php";
+$query_stato_blocconote="SELECT stato FROM settings WHERE nome = \"blocconote\"";
+$stato=mysql_fetch_row(mysql_query($query_stato_blocconote));
+if($stato[0] == 1){
 if(isset($_POST['note'])){
 	if ( ! get_magic_quotes_gpc() ) {
   		$_POST['note'] = addslashes(strip_tags($_POST['note']));
@@ -45,7 +48,7 @@ if(isset($_POST['note'])){
 $query="SELECT * FROM notepad ORDER BY id DESC";
 $result = mysql_query($query);
 	if (!$result) {
-		die('<p class=\"error\">Mysql ERROR: ' . mysql_error() . ' <i>hai configurato il file <a href=install.php>config.php</a>?</i></p>');
+		die('Invalid query: ' . mysql_error());
 	}
 	while ($row = mysql_fetch_array($result, MYSQL_NUM)){
 		echo "<p class=\"inputnote\">" . $row[1] . " <i class=\"delnote\">" . $row[2] . " <a href=\"note.php?delid=" . $row[0] . "\"><img src=\"img/x.png\" alt=\"cancella\" /></a></i> </p>\n";
@@ -53,3 +56,6 @@ $result = mysql_query($query);
 }
 ?>
 </div>
+<?php
+}
+?>

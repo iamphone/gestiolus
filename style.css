@@ -1,9 +1,14 @@
+@font-face{
+	font-family: Roboto;
+	src: url(./Roboto-Regular.ttf);
+}
+
 body {
 	background-color:#f4f4f4;
 	color: black;
 	margin: 0;
 	padding: 0;
-	font-family: arial;
+	font-family: Roboto;
 }
 header {
 	background-color: #e4e4e4;
@@ -12,7 +17,7 @@ header {
 }
 article, p{
 	text-align: left;
-	font-family: arial;
+	font-family: Roboto;
 	padding: 0px;
 }
 img{
@@ -23,7 +28,7 @@ a{
 	text-decoration: none;
 }
 footer{
-	font-family: arial;
+	font-family: Roboto;
 	font-size: 10px;
 	background-color: #d4d4d4;
 }
@@ -43,29 +48,31 @@ footer{
 td:hover{
 	background-color: #ddd;
 }
+table{
+	border-collapse: collapse;
+}
 th{
-	background-color: #eee;
+	background-color: #aaa;
 	padding-right: 10px;
+	padding: 5px;
+	color: #fff;
 }
 td { 
-	border-bottom: solid 1px #999;
-	border-left: solid 1px #aaa; 
-	padding-right: 10px;
-	padding-left: 5px;
+	border-bottom: solid 2px #ddd;
+	//border-left: solid 1px #aaa; 
+	padding: 5px;
+	//padding-left: 5px;
 	vertical-align: top;
 }
 input, textarea, select{
 	padding: 3px;
 	font-size: 14px;
 	font-weight: bold;
-	font-family: arial;
+	font-family: Roboto;
 	color: #111;
 }
-ul{
-	padding-left: 50px;
-}
 .icone{
-	font-family: Arial;
+	font-family: Roboto;
 	color: 797;
 	font-size: 15px;
 	text-align: center;
@@ -73,10 +80,11 @@ ul{
 	float: left;
 }
 .titolo{
-	text-align: center;
+	text-align: right;
 	font-size: 40px;
-	background-color: #e4e4e4;
-	padding: 10px;
+	color: #FFFFFF;
+	background-color: #4CAF50;
+	padding: 20px;
 }
 .nomi{
 	padding: 10px;
@@ -88,7 +96,7 @@ ul{
 	font-size: 12px;
 	font-style: italic;
 	margin-left: 30%;
-	border-top: dotted 1px #333;
+	//border-top: dotted 1px #333;
 	margin-top: 10px;
 }
 .data{
@@ -141,8 +149,4 @@ ul{
 .delnote{
 	position: fixed;
 	right: 35%;
-}
-
-.install{	
-	text-align: center;
 }
